@@ -1,0 +1,24 @@
+.navbar {
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    box-shadow: 0 0 8px black;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    padding: 10px;
+    margin-left: 2%;
+    color: white;
+    font-weight: 600;
+    font-family: serif;
+    text-shadow: 0 4px 4px black;
+}
+
+.navbar-brand:hover {
+    cursor:pointer;
+    text-shadow: 0 10px 10px black;
+}
+
