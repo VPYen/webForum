@@ -71,7 +71,8 @@
               "browserTarget": "webForum:build:production"
             },
             "development": {
-              "browserTarget": "webForum:build:development"
+              "browserTarget": "webForum:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

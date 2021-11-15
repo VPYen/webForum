@@ -10,8 +10,8 @@ import { RestrictedAccessPageComponent } from './restricted-access-page/restrict
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
-  { path: "forum", component: ForumPageComponent},                // Remember to add forum title into url routing
-  { path: "thread", component: ThreadPageComponent},              // Remember to add forum title into url routing
+  { path: "forums", component: ForumPageComponent},                // Remember to add forum title into url routing
+  { path: "thread/:id", component: ThreadPageComponent},              // Remember to add forum title into url routing
   { path: "restricted", component: RestrictedAccessPageComponent},
   { path: "privileges", component: PermissionsPageComponent},
   { path: "**", component: NotFoundPageComponent},

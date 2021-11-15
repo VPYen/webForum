@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
   constructor(private _httpService: HttpService,
               private _route: ActivatedRoute, private _router: Router) { }
 
+  // To Do:
+  // Establish redirection to forum page after login
+
   ngOnInit(): void {
     this.formLogin = {username: "", password: ""};
     this.formReg = {username:"", password:"", passConfirm:""};
@@ -28,14 +31,17 @@ export class HomeComponent implements OnInit {
   loginToggle(){
     this.register = false
     this.login = true
+    this.errors = {}
   }
 
   regToggle(){
     this.register = true
     this.login = false
+    this.errors = {}
   }
 
   submitLogin() {
+    console.log("submitLogin")
     this.errors = {};
     let observable = this._httpService.getUserFromService(this.formLogin);
     observable.subscribe((data : { [key:string]: any}) => {
@@ -50,6 +56,7 @@ export class HomeComponent implements OnInit {
   }
 
   submitReg() {
+    console.log("submitReg")
     this.errors = {};
     if(this.formReg.username.toUpperCase() === "GUEST") {
       this.errors = {errorUser: "Cannot use 'Guest' as a username"};
@@ -68,6 +75,5 @@ export class HomeComponent implements OnInit {
       })
     }
   }
-
 
 }

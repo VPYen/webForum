@@ -30,7 +30,7 @@ import { ThreadPageComponent } from './thread-page/thread-page.component';
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

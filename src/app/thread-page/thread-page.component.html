@@ -1,1 +1,18 @@
-<p>thread-page works!</p>
+<div class="container modalContent thread">
+    <div class="modalHeader">
+        <h2 style="color:white;" *ngIf="thread">{{thread.threadName}}</h2>
+    </div>
+    <div class="modalBody">
+        <hr style="height: 2px; width: 90%; background: white;" />
+        <div *ngIf="thread.posts">
+            <div *ngFor="let post of thread.posts">
+                <hr style="height: 1px; width: 90%; background: 33ffff;" />
+                <p>{{post.message}}</p>
+                <p>{{post.userName}}</p>
+            </div>
+        </div>
+        <button class="btn btn-secondary">Reply</button>
+    </div>
+    <div class="modalFooter">
+    </div>
+</div>

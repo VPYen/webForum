@@ -52,7 +52,7 @@ module.exports = {
       User.findOne({userName: req.body.username}, function(err, user){
         if(user){
           console.log("User exists\n", "Request Body:", req.body, "\nUser From DB: ", user);
-          res.json({message:"User exists"});
+          res.json({error:"User exists"});
         }else if (err) {
           console.log(err);
           res.json({error:"New User error", err});
@@ -87,11 +87,16 @@ module.exports = {
 
 // Thread Functions
   getOneThread: function(req, res) {
-    Thread.findOne({threadName: req.params.name}, function(err, thread) {
+    console.log(req.params)
+    Thread.findOne({_id: req.params.threadId}, function(err, thread) {
+      console.log(thread)
         if(err) {
             console.log("Find Thread error" + err);
             res.json({error: "Find Thread error"})
-        }else {
+        }else if(thread == null){
+            console.log("getOneThread: " + thread);
+            res.json({error: "Unable to find thread"})
+          }else{
             res.json({message:"Get thread success", thread:thread});
         }
     });
@@ -103,7 +108,7 @@ module.exports = {
         console.log("Find allThreads error ", err);
         res.json({error: "Find allThreads error"});
       }else {
-        res.json({message:"Get all threads sucess", threads: threads});
+        res.json({message:"Get all threads success", threads: threads});
       }
     });
   },

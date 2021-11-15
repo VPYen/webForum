@@ -12,6 +12,9 @@ export class PermissionsPageComponent implements OnInit {
   constructor(private _httpService: HttpService,
               private _route: ActivatedRoute, private _router: Router) { }
 
+  // To Do:
+  // Est. redirection to this page, if user attempts to access site without authorized login
+
   ngOnInit(): void {
   }
 

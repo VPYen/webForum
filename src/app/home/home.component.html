@@ -1,4 +1,4 @@
-<<div class="container">
+<div class="container">
     <!-- Login -->
     <form *ngIf="login" (submit)="submitLogin()">
         <div class="container modalContent">
@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label for="pass">Password Confirmation</label>
                     <input type="password" name="formReg.passConfirm" [(ngModel)]="formReg.passConfirm" class="form-control" id="pass" placeholder="Password">
-                    <p *ngIf="errors" class="error.error">{{errors.error}}</p>
+                    <p class="error" *ngIf="errors.error">{{errors.error}}</p>
                 </div>
                 <p>*Username will be case sensitive</p>
                 <hr/>

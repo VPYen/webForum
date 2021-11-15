@@ -1,10 +1,20 @@
 <div class="container modalContent">
-    <div class="modalHeader">
-    </div>
+    <div class="modalHeader"></div>
     <div class="modalBody">
-
+        <table class="highlight centered responsive-table">
+            <thead>
+                <tr>
+                    <th><u>Forum</u></th>
+                    <th><u>Author</u></th>
+                </tr>
+            </thead>
+            <tbody *ngIf="forum">
+                <tr *ngFor="let thread of forum">
+                    <td><a type="button" class="threadlink" routerLink="/thread/{{thread._id}}"><u>{{thread.threadName}}</u></a></td>
+                    <td>{{thread.userName}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="modalFooter">
-
-    </div>
+    <div class="modalFooter"></div>
 </div>
