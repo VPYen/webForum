@@ -26,12 +26,30 @@ module.exports = {
             bcrypt.compare(req.body.password, user.password, function (err, check){
               if(check) {
                 console.log("Login Success", check);
-                res.json({message: "Login Successful"});
+                res.json({message: "Login Successful", user: user});
               }else {
                 console.log("Bcrypt error: ", err)
                 res.json({error: "Invalid Login"})
               }
             })
+          }
+      });
+    },
+
+    checkToken: function(req, res) {
+      User.findOne({userName: req.body.username}, function(err, user) {
+          if(err) {
+            console.log("Find user error", err);
+            res.json({error: "Unable to validate user"})
+          }else if (user == null) {
+            console.log("Login error: User value: ", user)
+            res.json({error: "Unable to validate user"});
+          }else{
+            if (req.body.user == user.user && req.body.password == user.password){
+              res.json({success: "Validation Successful"});
+            }else{
+              res.json({error: "Unable to validate user"})
+            }
           }
       });
     },

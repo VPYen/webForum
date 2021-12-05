@@ -1,3 +1,4 @@
 <nav class="navbar bg-secondary">
   <h1 class="navbar-brand" [routerLink]="['']">Web Forum</h1>
+    <h3 class="user" (click)="userLogout()" *ngIf="username">{{username}}</h3>
 </nav>

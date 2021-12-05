@@ -11,11 +11,10 @@ import { Router, ActivatedRoute} from '@angular/router';
 })
 export class AppComponent implements OnInit {
   
-  constructor(private _route: ActivatedRoute, private _router: Router, private _httpService: HttpService) {
-  }
+  constructor(private _route: ActivatedRoute, private _router: Router, private _httpService: HttpService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
 
   scrollToTop() {
     document.body.scrollTop = 0;              // For Safari

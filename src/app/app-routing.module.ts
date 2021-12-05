@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: "forums", component: ForumPageComponent},                // Remember to add forum title into url routing
   { path: "thread/:id", component: ThreadPageComponent},              // Remember to add forum title into url routing
   { path: "restricted", component: RestrictedAccessPageComponent},
-  { path: "privileges", component: PermissionsPageComponent},
+  { path: "permissions", component: PermissionsPageComponent},
   { path: "**", component: NotFoundPageComponent},
 ];
 

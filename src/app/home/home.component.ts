@@ -13,9 +13,8 @@ export class HomeComponent implements OnInit {
   login = true
   register = false
   errors: any = {}
+  success: any = {}
   formReg = {username:"", password:"", passConfirm:""}
-
-  @Output() user = new EventEmitter();
 
   constructor(private _httpService: HttpService,
               private _route: ActivatedRoute, private _router: Router) { }
@@ -41,6 +40,7 @@ export class HomeComponent implements OnInit {
   }
 
   submitLogin() {
+    this.success = {}
     console.log("submitLogin")
     this.errors = {};
     let observable = this._httpService.getUserFromService(this.formLogin);
@@ -49,13 +49,18 @@ export class HomeComponent implements OnInit {
         console.log(data);
         this.errors = data;
       }else {
-        this.user.emit(data['user']);
+        console.log(data)
+        this.success = {success: "Login Successful"};
         this.formLogin = {username: "", password: ""};
+        localStorage.setItem('user', data['user']['userName']);
+        localStorage.setItem('token', data['user']['password']);
+        this._router.navigate(['/forums']);
       }
     })
   }
 
   submitReg() {
+    this.success = {}
     console.log("submitReg")
     this.errors = {};
     if(this.formReg.username.toUpperCase() === "GUEST") {
@@ -69,7 +74,7 @@ export class HomeComponent implements OnInit {
         if(data['error']) {
           this.errors = data;
         } else {
-          this.user.emit(data['user']);
+          this.success = {success: "Account Creation Successful"}
           this.formReg = {username: "", password: "", passConfirm: ""};
         }
       })

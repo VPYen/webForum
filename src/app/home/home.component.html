@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container">
     <!-- Login -->
     <form *ngIf="login" (submit)="submitLogin()">
@@ -15,6 +16,7 @@
                     <label for="pass">Password</label>
                     <input type="password" name="formLogin.password" [(ngModel)]="formLogin.password" class="form-control" id="pass" placeholder="Password">
                     <p class="error" *ngIf="errors.error">{{errors.error}}</p>
+                    <p class="error" style="color: green" *ngIf=success.success>{{success.success}}</p>
                 </div>
                 <p>*Username is case sensitive</p>
                 <hr/>
@@ -47,6 +49,7 @@
                     <label for="pass">Password Confirmation</label>
                     <input type="password" name="formReg.passConfirm" [(ngModel)]="formReg.passConfirm" class="form-control" id="pass" placeholder="Password">
                     <p class="error" *ngIf="errors.error">{{errors.error}}</p>
+                    <p class="error" style="color: green" *ngIf=success.success>{{success.success}}</p>
                 </div>
                 <p>*Username will be case sensitive</p>
                 <hr/>

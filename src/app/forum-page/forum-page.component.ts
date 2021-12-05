@@ -23,8 +23,27 @@ export class ForumPageComponent implements OnInit {
   // Est. ability to create new threads
 
   ngOnInit(): void {
-    this.forum = {}
+    this.checkToken();
+    this.forum = {};
     this.getThreads();
+  }
+
+  checkToken(){
+    let token: any = null;
+    let user: any = null;
+    token = localStorage.getItem('token');
+    user = localStorage.getItem('user');
+    if (token){
+      let observable = this._httpService.checkTokenFromService({username: user, password: token})    
+      observable.subscribe((data : {[key:string] : any}) => {
+          console.log(data)
+          if(data["error"]){
+            this._router.navigate(['/permissions'])
+          }
+      });
+    }else{
+      this._router.navigate(['/permissions'])
+    }
   }
 
   getThreads(){

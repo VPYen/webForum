@@ -13,6 +13,10 @@ export class HttpService {
       return this._http.get(this.baseURL + "user/all");
     }
 
+    checkTokenFromService(form: any){
+      return this._http.post(this.baseURL + "user/check", form)
+    }
+
     postNewUserFromService(form: any){
       return this._http.post(this.baseURL + "user/new", form);
     }

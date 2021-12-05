@@ -20,12 +20,32 @@ export class ThreadPageComponent implements OnInit {
   // Establish ability to create new posts and attach to thread
 
   ngOnInit(): void {
+    this.checkToken();
     this._route.params.subscribe((params: Params) => {
       this.id = params["id"];
     });
     this.thread = {}
     this.getThread();
   }
+
+  checkToken(){
+    let token: any = null;
+    let user: any = null;
+    token = localStorage.getItem('token');
+    user = localStorage.getItem('user');
+    if (token){
+      let observable = this._httpService.checkTokenFromService({username: user, password: token})    
+      observable.subscribe((data : {[key:string] : any}) => {
+          console.log(data)
+          if(data["error"]){
+            this._router.navigate(['/permissions'])
+          }
+      });
+    }else{
+      this._router.navigate(['/permissions'])
+    }
+  }
+
 
   getThread(){
     let observable = this._httpService.getSingleThreadFromService(this.id);

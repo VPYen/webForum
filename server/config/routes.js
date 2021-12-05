@@ -22,6 +22,11 @@ module.exports = function(app) {
     main.getOneUser(req, res);
   });
 
+  // Check Token
+  app.post(baseURL+"/user/check", function(req, res) {
+    main.checkToken(req, res);
+  });
+
 // Threads
   // New Thread
   app.post(baseURL+"/threads/new", function(req, res) {
